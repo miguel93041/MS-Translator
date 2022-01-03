@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net5.0</TargetFramework>
+    <RootNamespace>MS_translator</RootNamespace>
+    <ApplicationIcon>icon.ico</ApplicationIcon>
+    <StartupObject />
+    <Authors>Miguel Granel Ferrer</Authors>
+    <Product>MS-translator</Product>
+    <Company />
+    <Description>Programa para transcribir automaticamente archivos .asm a un .txt interpretrado por logisim para cargar la RAM</Description>
+    <Copyright>Atribución-NoComercial-CompartirIgual 4.0 Internacional (CC BY-NC-SA 4.0)</Copyright>
+    <PackageLicenseExpression>Atribución-NoComercial-CompartirIgual 4.0 Internacional (CC BY-NC-SA 4.0)</PackageLicenseExpression>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+  </ItemGroup>
+
+</Project>
