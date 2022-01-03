@@ -12,6 +12,8 @@
     <Description>Programa para transcribir automaticamente archivos .asm a un .txt interpretrado por logisim para cargar la RAM</Description>
     <Copyright>Atribución-NoComercial-CompartirIgual 4.0 Internacional (CC BY-NC-SA 4.0)</Copyright>
     <PackageLicenseExpression>Atribución-NoComercial-CompartirIgual 4.0 Internacional (CC BY-NC-SA 4.0)</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/miguel93041/MS-Translator</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/miguel93041/MS-Translator</RepositoryUrl>
   </PropertyGroup>
 
   <ItemGroup>

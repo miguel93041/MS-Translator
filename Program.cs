@@ -21,6 +21,7 @@ namespace MS_translator
       Console.WriteLine("#                                                                                            v1.0.0 03/01/2022 #");
       Console.WriteLine("#                                                                                  Autor: Miguel Granel Ferrer #");
       Console.WriteLine("#                       Con licencia Atribución-NoComercial-CompartirIgual 4.0 Internacional (CC BY-NC-SA 4.0) #");
+      Console.WriteLine("#                                                                 https://github.com/miguel93041/MS-Translator #");
       Console.WriteLine("################################################################################################################");
 
       if (args.Length != 1)
