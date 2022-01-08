@@ -135,6 +135,10 @@ namespace MS_translator
 
     private Memory<object> ExtractMemory(string line)
     {
+<<<<<<< HEAD
+        Console.WriteLine($"Extrayendo memoria: {line}");
+=======
+>>>>>>> parent of 0b433d5 (fixing path bugs with Linux and OSX, expanding logging)
       string name = ExtractName(line);
       string formattedLine = FormatLine(line);
       int firstSpacePosition = formattedLine.IndexOf(' ');

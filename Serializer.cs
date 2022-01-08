@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.IO.Enumeration;
 using System.Linq;
 using System.Text;
 
@@ -13,7 +14,8 @@ namespace MS_translator
     public Serializer(string filePath)
     {
       FileInfo = new FileInfo(filePath);
-      OutputPath = @$"{FileInfo.Directory?.FullName}\{FileInfo.Name.Split('.')[0]}.txt";
+      string fileName = $"{FileInfo.Name.Split('.')[0]}.txt";
+      OutputPath = Path.Combine(FileInfo.Directory!.FullName, fileName);
     }
 
     public string Serialize()
@@ -83,17 +85,17 @@ namespace MS_translator
       switch (element)
       {
         case char:
-        {
-          byte[] asciiBytes = Encoding.ASCII.GetBytes(element.ToString()!);
-          hex = asciiBytes.Aggregate("", (current, b) => current + b.ToString("x"));
-          break;
-        }
+          {
+            byte[] asciiBytes = Encoding.ASCII.GetBytes(element.ToString()!);
+            hex = asciiBytes.Aggregate("", (current, b) => current + b.ToString("x"));
+            break;
+          }
         case int dec:
-        {
-          string binaryDecimal = Convert.ToString(dec, 2);
-          hex = Common.BinaryToHex(binaryDecimal);
-          break;
-        }
+          {
+            string binaryDecimal = Convert.ToString(dec, 2);
+            hex = Common.BinaryToHex(binaryDecimal);
+            break;
+          }
       }
 
       return hex;
