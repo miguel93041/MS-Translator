@@ -18,7 +18,7 @@ namespace MS_translator
       Console.WriteLine("#  ██║╚██╔╝██║╚════██║╚════╝██║   ██╔══██╗██╔══██║██║╚██╗██║╚════██║██║     ██╔══██║   ██║   ██║   ██║██╔══██╗ #");
       Console.WriteLine("#  ██║ ╚═╝ ██║███████║      ██║   ██║  ██║██║  ██║██║ ╚████║███████║███████╗██║  ██║   ██║   ╚██████╔╝██║  ██║ #");
       Console.WriteLine("#  ╚═╝     ╚═╝╚══════╝      ╚═╝   ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═══╝╚══════╝╚══════╝╚═╝  ╚═╝   ╚═╝    ╚═════╝ ╚═╝  ╚═╝ #");
-      Console.WriteLine("#                                                                                            v1.0.0 03/01/2022 #");
+      Console.WriteLine("#                                                                                            v1.0.1 08/01/2022 #");
       Console.WriteLine("#                                                                                  Autor: Miguel Granel Ferrer #");
       Console.WriteLine("#                       Con licencia Atribución-NoComercial-CompartirIgual 4.0 Internacional (CC BY-NC-SA 4.0) #");
       Console.WriteLine("#                                                                 https://github.com/miguel93041/MS-Translator #");
@@ -37,12 +37,15 @@ namespace MS_translator
 
       try
       {
+        Console.WriteLine($"Buscando archivo de configuración en {Config.ConfigPath}");
         if (File.Exists(Config.ConfigPath))
         {
+          Console.WriteLine("Deserializando archivo de configuración ...");
           Config = Config.Deserialize(Config.ConfigPath);
         }
         else
         {
+          Console.WriteLine("Creando nuevo archivo de configuración ...");
           Config = new Config();
           using StreamWriter configFile = new(Config.ConfigPath, false, Encoding.UTF8) { AutoFlush = true };
           configFile.Write(Config.Serialize());
@@ -55,7 +58,7 @@ namespace MS_translator
         Console.WriteLine($"La creación del archivo .txt ha finalizado, se encuentra en {outputPath}");
         Console.WriteLine("Presiona alguna tecla para terminar el programa.");
         Console.ReadLine();
-      } 
+      }
       catch (Exception e)
       {
         Console.WriteLine($"Se ha encontrado la siguiente excepción mientras se intentaba convertir el archivo: {e}");

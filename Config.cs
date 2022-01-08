@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Diagnostics;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -8,12 +9,11 @@ namespace MS_translator
   public class Config
   {
     [JsonIgnore]
-    public static string ConfigPath
-    {
-      get
-      {
+    public static string ConfigPath {
+      get {
         FileInfo fileInfo = new(Process.GetCurrentProcess().MainModule!.FileName!);
-        return @$"{fileInfo.Directory}\{fileInfo.Name.Split('.')[0]}.config.json";
+        string configName = $"{fileInfo.Name.Split('.')[0]}.config.json";
+        return Path.Combine(AppContext.BaseDirectory, configName);
       }
     }
 
@@ -21,11 +21,11 @@ namespace MS_translator
     public static string Version => Process.GetCurrentProcess().MainModule!.FileVersionInfo.FileVersion;
 
     [JsonProperty("instructionSize")]
-    public int InstructionSize { get; set; } = 2;    
-    
+    public int InstructionSize { get; set; } = 2;
+
     [JsonProperty("firstOperandSize")]
-    public int FirstOperandSize { get; set; } = 7;    
-    
+    public int FirstOperandSize { get; set; } = 7;
+
     [JsonProperty("secondOperandSize")]
     public int SecondOperandSize { get; set; } = 7;
 
@@ -43,7 +43,7 @@ namespace MS_translator
         new JProperty("name", "cmp"),
         new JProperty("value", 1),
         new JProperty("immediate", false),
-      },  
+      },
       new JObject()
       {
         new JProperty("name", "mov"),
