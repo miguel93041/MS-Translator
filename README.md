@@ -1,4 +1,4 @@
-[![Version](https://img.shields.io/badge/version-1.0.0-brightgreen)](https://github.com/miguel93041/accessmysqlconverter)
+[![Version](https://img.shields.io/badge/version-1.0.1-brightgreen)](https://github.com/miguel93041/accessmysqlconverter)
 [![License](https://img.shields.io/badge/license-CCBYNCSA4.0-blue.svg?style=flat)](https://github.com/miguel93041/MS-Translator/blob/master/LICENSE.txt)
 
 - [MS-Translator](#ms-translator)
