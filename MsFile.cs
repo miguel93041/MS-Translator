@@ -117,7 +117,7 @@ namespace MS_translator
       for (int i = 0; i < dataPositions.Count; i++)
       {
         int position = dataPositions[i];
-        int startingPosition = int.Parse(new string(FormatLine(fileLines[position]).Replace(".data", "").Where(c => !char.IsWhiteSpace(c)).ToArray()));
+        int startingPosition = int.Parse(new string (FormatLine(fileLines[position]).Replace(".data", "").Where(c => !char.IsWhiteSpace(c)).ToArray()));
         bool isLast = (i + 1) == dataPositions.Count;
         int count = !isLast ? dataPositions[i + 1] - position - 1 : codeStartPos - position - 1;
         string[] memoryLines = fileLines.GetRange(position + 1, count).Where(l => !string.IsNullOrWhiteSpace(l)).ToArray();
@@ -136,7 +136,7 @@ namespace MS_translator
 
     private Memory<object> ExtractMemory(string line)
     {
-      Console.WriteLine($"Extrayendo memoria: {line}");
+        Console.WriteLine($"Extrayendo memoria: {line}");
       string name = ExtractName(line);
       string formattedLine = FormatLine(line);
       int firstSpacePosition = formattedLine.IndexOf(' ');
@@ -152,8 +152,8 @@ namespace MS_translator
       }
       else //Data es un int
       {
-        memory = new Memory<object>(name, type, sData.Contains(',') ?
-          Array.ConvertAll(sData.Where(c => c != ' ' && c != ',').ToArray(), c => (int)char.GetNumericValue(c)) :
+        memory = new Memory<object>(name, type, sData.Contains(',') ? 
+          Array.ConvertAll(sData.Where(c => c != ' ' && c != ',').ToArray(), c => (int)char.GetNumericValue(c)) : 
           int.Parse(sData));
       }
 
