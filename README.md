@@ -5,6 +5,8 @@
   * [¿Qué es?](#qué-es)
   * [Instalación](#instalación)
   * [¿Cómo se usa?](#cómo-se-usa)
+    + [Windows](#windows)
+    + [Linux y OS X](#linux-y-os-x)
   * [Uso extendido](#uso-extendido)
     + [Modificar tamaño de bits instrucción, primer operando, segundo operando](#modificar-tamaño-de-bits-instrucción-primer-operando-segundo-operando)
     + [Añadir nuevas instrucciones](#añadir-nuevas-instrucciones)
@@ -23,8 +25,18 @@ MS-Translator es una aplicación creada para ayudar a transcribir automáticamen
 Instalar el programa es muy fácil, simplemente ve a la categoría de **Releases** de GitHub y descargate la última versión. Aunque **te agradecería que te lo descargaras por Wuolah** para que **aportes un granito de arena en mi café☕ de época de exámenes**, gracias❤️.
 
 ## ¿Cómo se usa?
+### Windows
 ¡Usarlo es extremadamente sencillo, simplemente arrastra tu archivo .asm sobre él .exe y el programa empezará la conversión!
 ![Application Image](https://gyazo.com/7cd1f738ab488ce8fd4e012b4c1eada3.gif)
+### Linux y OS X
+Primero asegurate de tener permisos de ejecución para ello abre en una consola y ejecuta *ls -l* verifica que en la columna de la izquierda tienes la letra x que indica permisos de ejecución, si no los tienes ejecuta *chmod 777 MS-translator* y verifica que ahora los tengas.
+
+![nopermlinux](https://gyazo.com/6435ab2518f75a54ee53bd9a99e62be5.png)
+![permlinux](https://gyazo.com/df9dd2537e7116df6d286c29ac45271e.png)
+
+Después lanza el programa mediante terminal escribiendo *./MS-translator ejemplo.asm* siendo el primer parametro de ejecución la ruta relativa o absoluta al archivo .asm
+
+![launchlinux](https://gyazo.com/6e6725e7a1df26b63a5db2c7c2467def.png)
 
 Por ejemplo este sería un archivo de .asm válido (puede haber comentarios, el programa los omite)
 ```
