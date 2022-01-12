@@ -15,7 +15,7 @@
     <PackageProjectUrl>https://github.com/miguel93041/MS-Translator</PackageProjectUrl>
     <RepositoryUrl>https://github.com/miguel93041/MS-Translator</RepositoryUrl>
     <Platforms>AnyCPU</Platforms>
-    <Version>1.0.1</Version>
+    <Version>1.0.2</Version>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">

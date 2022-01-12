@@ -152,9 +152,9 @@ namespace MS_translator
       }
       else //Data es un int
       {
-        memory = new Memory<object>(name, type, sData.Contains(',') ? 
-          Array.ConvertAll(sData.Where(c => c != ' ' && c != ',').ToArray(), c => (int)char.GetNumericValue(c)) : 
-          int.Parse(sData));
+        memory = new Memory<object>(name, type, sData.Contains(',') ?
+          Array.ConvertAll(string.Concat(sData.Where(c => !char.IsWhiteSpace(c))).Split(',').ToArray(), s => int.Parse(s)) :
+          int.Parse(sData)) ;
       }
 
       return memory;

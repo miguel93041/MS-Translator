@@ -17,6 +17,19 @@ namespace MS_translator
       return new string(buff);
     }
 
-    public static string BinaryToHex(string binary) => Convert.ToInt64(binary, 2).ToString("x");
+    public static string BinaryToHex(string binary)
+    {
+      int minimumBits = Program.Config.InstructionSize + Program.Config.FirstOperandSize + Program.Config.SecondOperandSize;
+      if (minimumBits <= 16)
+      {
+        if (binary.Length > 16)
+        {
+          binary = binary.Substring(binary.Length - 16);
+        }
+        return Convert.ToInt16(binary, 2).ToString("x");
+      } 
+
+      return Convert.ToInt32(binary, 2).ToString("x");
+    }
   }
 }
