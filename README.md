@@ -22,7 +22,7 @@ sabrás el tiempo que consume⏳, más aún si tienes que arreglar alguna línea
 MS-Translator es una aplicación creada para ayudar a transcribir automáticamente archivos .asm a un .txt que contiene todo el programa de ensamblador traducido a hexadecimal para cargar en una memoria (RAM, ROM) de Logisim.
 
 ## Instalación
-Instalar el programa es muy fácil, simplemente ve a la categoría de **Releases** de GitHub y descargate la última versión. Aunque **te agradecería que te lo descargaras por ![Wuolah](https://www.wuolah.com/apuntes/Traductor-Ensamblador-a-Logisim-exe-1824829-MS-Translator.pdf-5197110)Wuolah** para que **aportes un granito de arena en mi café☕ de época de exámenes**, gracias❤️.
+Instalar el programa es muy fácil, simplemente ve a la categoría de **Releases** de GitHub y descargate la última versión. Aunque **te agradecería que te lo descargaras por ![Wuolah](https://www.wuolah.com/apuntes/Traductor-Ensamblador-a-Logisim-exe-1824829-MS-Translator.pdf-5197110)** para que **aportes un granito de arena en mi café☕ de época de exámenes**, gracias❤️.
 
 ## ¿Cómo se usa?
 ### Windows
