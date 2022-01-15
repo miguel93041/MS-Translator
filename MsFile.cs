@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.Design;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Text.RegularExpressions;
 using Newtonsoft.Json.Linq;
 
 namespace MS_translator
@@ -117,7 +119,7 @@ namespace MS_translator
       for (int i = 0; i < dataPositions.Count; i++)
       {
         int position = dataPositions[i];
-        int startingPosition = int.Parse(new string (FormatLine(fileLines[position]).Replace(".data", "").Where(c => !char.IsWhiteSpace(c)).ToArray()));
+        int startingPosition = int.Parse(new string(FormatLine(fileLines[position]).Replace(".data", "").Where(c => !char.IsWhiteSpace(c)).ToArray()));
         bool isLast = (i + 1) == dataPositions.Count;
         int count = !isLast ? dataPositions[i + 1] - position - 1 : codeStartPos - position - 1;
         string[] memoryLines = fileLines.GetRange(position + 1, count).Where(l => !string.IsNullOrWhiteSpace(l)).ToArray();
@@ -136,7 +138,7 @@ namespace MS_translator
 
     private Memory<object> ExtractMemory(string line)
     {
-        Console.WriteLine($"Extrayendo memoria: {line}");
+      Console.WriteLine($"Extrayendo memoria: {line}");
       string name = ExtractName(line);
       string formattedLine = FormatLine(line);
       int firstSpacePosition = formattedLine.IndexOf(' ');
@@ -148,13 +150,32 @@ namespace MS_translator
       Memory<object> memory;
       if (sData.Contains("\"") || sData.Contains("\'")) //Es de tipo string
       {
-        memory = new Memory<object>(name, type, sData.Length > 3 ? sData[1..^1].ToCharArray() : Convert.ToChar(sData[1..^1]));
+        const string pattern = "(\"|\')(.|\\.|\\|\\{\\[)(\"|\'),?\\s?";
+        if (sData.Length > 3)
+        {
+            char[] chars = Regex.Matches(sData, pattern).Select(r =>
+            {
+                string value = r.Value;
+                if (value[^1] == ',')
+                {
+                    value = value[..^1];
+                }
+
+                value = value.Substring(1, 1);
+                return char.Parse(value);
+            }).ToArray();
+            memory = new Memory<object>(name, type, chars);
+        }
+        else
+        {
+            memory = new Memory<object>(name, type, Convert.ToChar(sData[1..^1]));
+        }
       }
       else //Data es un int
       {
         memory = new Memory<object>(name, type, sData.Contains(',') ?
           Array.ConvertAll(string.Concat(sData.Where(c => !char.IsWhiteSpace(c))).Split(',').ToArray(), int.Parse) :
-          int.Parse(sData)) ;
+          int.Parse(sData));
       }
 
       return memory;
