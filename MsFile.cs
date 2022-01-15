@@ -153,22 +153,30 @@ namespace MS_translator
         const string pattern = "(\"|\')(.|\\.|\\|\\{\\[)(\"|\'),?\\s?";
         if (sData.Length > 3)
         {
-            char[] chars = Regex.Matches(sData, pattern).Select(r =>
+          MatchCollection regexCoincidences = Regex.Matches(sData, pattern);
+          if (regexCoincidences.Count > 0)
+          {
+            char[] chars = regexCoincidences.Select(r =>
             {
-                string value = r.Value;
-                if (value[^1] == ',')
-                {
-                    value = value[..^1];
-                }
+              string value = r.Value;
+              if (value[^1] == ',')
+              {
+                value = value[..^1];
+              }
 
-                value = value.Substring(1, 1);
-                return char.Parse(value);
+              value = value.Substring(1, 1);
+              return char.Parse(value);
             }).ToArray();
             memory = new Memory<object>(name, type, chars);
+          }
+          else
+          {
+            memory = new Memory<object>(name, type, sData[1..^1].ToCharArray());
+          }
         }
         else
         {
-            memory = new Memory<object>(name, type, Convert.ToChar(sData[1..^1]));
+          memory = new Memory<object>(name, type, Convert.ToChar(sData[1..^1]));
         }
       }
       else //Data es un int

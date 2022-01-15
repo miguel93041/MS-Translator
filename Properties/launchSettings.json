@@ -1,7 +1,8 @@
 {
   "profiles": {
     "MS-translator": {
-      "commandName": "Project"
+      "commandName": "Project",
+      "commandLineArgs": "C:\\Users\\migue\\Desktop\\798913\\prueba\\798913-2-3.asm"
     }
   }
 }
