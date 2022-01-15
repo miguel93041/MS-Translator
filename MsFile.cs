@@ -146,14 +146,14 @@ namespace MS_translator
       ETypes type = (ETypes)Enum.Parse(typeof(ETypes), sType, true);
 
       Memory<object> memory;
-      if (sData.Contains("\"")) //Es de tipo string
+      if (sData.Contains("\"") || sData.Contains("\'")) //Es de tipo string
       {
         memory = new Memory<object>(name, type, sData.Length > 3 ? sData[1..^1].ToCharArray() : Convert.ToChar(sData[1..^1]));
       }
       else //Data es un int
       {
         memory = new Memory<object>(name, type, sData.Contains(',') ?
-          Array.ConvertAll(string.Concat(sData.Where(c => !char.IsWhiteSpace(c))).Split(',').ToArray(), s => int.Parse(s)) :
+          Array.ConvertAll(string.Concat(sData.Where(c => !char.IsWhiteSpace(c))).Split(',').ToArray(), int.Parse) :
           int.Parse(sData)) ;
       }
 
@@ -242,13 +242,11 @@ namespace MS_translator
       return line;
     }
 
-    private string RemoveJumps(string line)
-    {
-      return line.Replace("\r", "", true, CultureInfo.InvariantCulture)
-        .Replace("\t", "", true, CultureInfo.InvariantCulture)
-        .Replace("\n", "", true, CultureInfo.InvariantCulture)
-        .Replace("\\", "", true, CultureInfo.InvariantCulture);
-    }
+    private string RemoveJumps(string line) =>
+        line.Replace("\r", "", true, CultureInfo.InvariantCulture)
+            .Replace("\t", "", true, CultureInfo.InvariantCulture)
+            .Replace("\n", "", true, CultureInfo.InvariantCulture)
+            .Replace("\\", "", true, CultureInfo.InvariantCulture);
 
     private List<string> GetLines(string filePath) => File.ReadAllLines(filePath).ToList();
 
