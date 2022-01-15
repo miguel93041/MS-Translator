@@ -1,8 +1,7 @@
 {
   "profiles": {
     "MS-translator": {
-      "commandName": "Project",
-      "commandLineArgs": "C:\\Users\\migue\\Downloads\\NombreMayusculas.asm"
+      "commandName": "Project"
     }
   }
 }
